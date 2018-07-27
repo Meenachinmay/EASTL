@@ -23,6 +23,9 @@ namespace eastl
 	// Sets pResult to '\1' in the case that c is an invalid UCS4 char.
 	bool UCS4ToUTF8(uint32_t c, char8_t*& pResult)
 	{
+		if (*pResult == '\0'){
+			return;
+		}
 		if(c < 0x00000080)
 			*pResult++ = (char8_t)(uint8_t)c;
 		else if(c < 0x0800)
